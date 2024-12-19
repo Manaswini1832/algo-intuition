@@ -31,6 +31,13 @@ int binSearch(vector<int>& nums, int target){
     //in case the target isn't in nums, l points to the index where it should be placed to maintain the sorted property of the array
 }
 
+/*
+until now with the other algo I always use, i kept asking myself, is this number at mid = target? if yes, return mid else once loop breaks, return -1.
+in that case it's not enough for l to be < r. we should also check the case where l = r in the while condition
+
+but here we're asking is this number at mid < target or not and check all different possibilities. once l = r, the loop breaks & l is at the first false value. we return it. don't have to return -1
+*/
+
 int main()
 {
     vector<int> nums = {2,3,5,7,7,8};
