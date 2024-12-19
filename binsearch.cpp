@@ -38,6 +38,20 @@ in that case it's not enough for l to be < r. we should also check the case wher
 but here we're asking is this number at mid < target or not and check all different possibilities. once l = r, the loop breaks & l is at the first false value. we return it. don't have to return -1
 */
 
+/*To find the EXACT index of target or return -1 if it DNE in array, use the following(upper function strategy adopted here)*/
+int search(vector<int>& nums, int target) {
+    int l = 0, r = nums.size()-1;
+    while(l < r){ //here the catch is, with this approach we do r=mid and not r=mid-1 which means if l can become r and if the loop has while(l<=r) we'll be stuf in an infinite loop
+        //therefore, since it's inevitable that we will reach l=r with this strategy, no need to put that in the while condition
+        int mid = l + (r-l)/2;
+        if(nums[mid] == target) return mid;
+        if(nums[mid] < target) l = mid+1;
+        else r = mid;
+    }
+
+    return nums[l] == target ? l : -1;
+}
+
 int main()
 {
     vector<int> nums = {2,3,5,7,7,8};
